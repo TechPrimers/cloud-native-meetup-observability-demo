@@ -19,3 +19,5 @@ This demo covers the 3 pillars of observability - Metrics, Logging and Tracing.
 - `linkerd` service mesh collects metrics about the pods and containers.
 - Spring Cloud Sleuth is used for Distributed tracing across microservices.
 - Google Stack Driver also collects the logs, metrics in the Google Cloud platform from the Google Kubernetes Engine.
+<img src="demo-architecture-linkerd.png" alt="linkerd architecture" />
+
