@@ -7,3 +7,6 @@ This demo can be deployed in Google Cloud. The scripts can be run in a sequence 
 - `4-linkerd-inject.sh`- Inject linkerd sidecars in the deployment.
 - `curl.sh` - Does a recursive call to the application to create artificial traffic to the application.
 - `distributed-trace.yml`- Deployment config in Kubernetes for having `spring-cloud-sleuth-server` and `spring-cloud-sleuth-client` deployed as 2 containers in a single pod. They have distributed tracing enabled using Spring Cloud Sleuth which helps in Distributed tracing.
+
+## Demo Architecture
+<img src="demo-architecture.png" alt="architecture" />
