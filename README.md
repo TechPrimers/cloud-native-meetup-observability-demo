@@ -9,4 +9,13 @@ This demo can be deployed in Google Cloud. The scripts can be run in a sequence 
 - `distributed-trace.yml`- Deployment config in Kubernetes for having `spring-cloud-sleuth-server` and `spring-cloud-sleuth-client` deployed as 2 containers in a single pod. They have distributed tracing enabled using Spring Cloud Sleuth which helps in Distributed tracing.
 
 ## Demo Architecture
+This demo covers the 3 pillars of observability - Metrics, Logging and Tracing.
+### Microservices 
+- `client` - Exposed from external service
+- `server` - Accessible from the `client`
 <img src="demo-architecture.png" alt="architecture" />
+
+### Metrics and Logging Monitoring
+- `linkerd` service mesh collects metrics about the pods and containers.
+- Spring Cloud Sleuth is used for Distributed tracing across microservices.
+- Google Stack Driver also collects the logs, metrics in the Google Cloud platform from the Google Kubernetes Engine.
