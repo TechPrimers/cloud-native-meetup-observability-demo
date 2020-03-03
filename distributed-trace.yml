@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring-cloud-sleuth
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-sleuth
+        version: "v1"
+    spec:
+      containers:
+        - name: server
+          image: 'gcr.io/fleet-resolver-237016/spring-cloud-sleuth-server:v1'
+          ports:
+            - containerPort: 8083
+        - name: client
+          image: 'gcr.io/fleet-resolver-237016/spring-cloud-sleuth-client:v1'
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-sleuth
+  labels:
+    name: spring-cloud-sleuth
+    version: "v1"
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: spring-cloud-sleuth
+    version: "v1"
+  type: LoadBalancer
